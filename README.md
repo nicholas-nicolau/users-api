@@ -11,7 +11,7 @@ docker compose up web
 ### Com o servidor rodando
 ```
 docker compose exec web sh
-rails db:drop db:create db:mmigrate db:seed
+rails db:drop db:create db:migrate db:seed
 ```
 
 ### Sem o servidor rodando
