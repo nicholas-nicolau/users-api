@@ -31,3 +31,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/coverage/index.html
+/coverage/.resultset.json
+/coverage/assets

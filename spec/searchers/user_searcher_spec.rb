@@ -207,6 +207,12 @@ RSpec.describe UserSearcher, type: :searcher do
       context 'when there is a page_size parameter' do
         let(:parameters) { {page_size: 2, request_from_api: true } }
 
+        it 'issues a get request' do
+          subject.search
+
+          expect(api_stub).to have_been_requested.once
+        end
+
         it 'returns the first two registers' do
           expect(subject.search).to match_array([user.as_json, user2.as_json])
         end
@@ -231,6 +237,12 @@ RSpec.describe UserSearcher, type: :searcher do
       context 'when there is a page_number parameter' do
         let(:parameters) { {page_number: 1, request_from_api: true } }
 
+        it 'issues a get request' do
+          subject.search
+
+          expect(api_stub).to have_been_requested.once
+        end
+
         it 'returns the 11º register' do
           expect(subject.search).to match_array([user11.as_json])
         end
@@ -250,6 +262,12 @@ RSpec.describe UserSearcher, type: :searcher do
 
       context 'when there is a sort_by parameter' do
         let(:parameters) { {sort_by: 'name', request_from_api: true } }
+
+        it 'issues a get request' do
+          subject.search
+
+          expect(api_stub).to have_been_requested.once
+        end
 
         it 'returns the first ten registers' do
           expect(subject.search).to match_array([user2.as_json, user3.as_json, user4.as_json, user5.as_json, user6.as_json, user7.as_json, user8.as_json, user9.as_json, user10.as_json, user11.as_json])
@@ -275,6 +293,12 @@ RSpec.describe UserSearcher, type: :searcher do
       context 'when there is a sort_direction parameter' do
         let(:parameters) { {sort_direction: 'desc', request_from_api: true} }
 
+        it 'issues a get request' do
+          subject.search
+
+          expect(api_stub).to have_been_requested.once
+        end
+
         it 'returns the first ten registers' do
           expect(subject.search).to match_array([user2.as_json, user3.as_json, user4.as_json, user5.as_json, user6.as_json, user7.as_json, user8.as_json, user9.as_json, user10.as_json, user11.as_json])
         end
@@ -298,6 +322,12 @@ RSpec.describe UserSearcher, type: :searcher do
 
       context 'when there is a term parameter' do
         let(:parameters) { {term: 'w', request_from_api: true} }
+
+        it 'issues a get request' do
+          subject.search
+
+          expect(api_stub).to have_been_requested.once
+        end
 
         it 'returns all registers that contains \'w\'' do
           expect(subject.search).to match_array([user6.as_json, user7.as_json, user8.as_json, user9.as_json, user10.as_json, user11.as_json])
